@@ -3,13 +3,13 @@ name = "g4satbench"
 version = "1.0.0"
 
 dependencies = [
-    "torch",
-    "torch-geometric",
-    "torch-scatter",
-    "torch-sparse",
-    "networkx",
-    "kmeans-pytorch",
-    "cnfgen @ git+https://git@github.com/zhaoyu-li/cnfgen.git",
-    "python-sat",
+#    "torch",
+#    "torch-geometric",
+#    "torch-scatter",
+#    "torch-sparse",
+#    "networkx",
+#    "kmeans-pytorch",
+#    "cnfgen @ git+https://git@github.com/zhaoyu-li/cnfgen.git",
+#    "python-sat",
 ]
 requires-python = ">=3.9"
