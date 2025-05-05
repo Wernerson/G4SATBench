@@ -145,7 +145,7 @@ class SATDataset(Dataset):
                 label = self.all_labels[split][idx]
                 file_name = self._get_file_name(split, cnf_filepath)
                 saved_path = os.path.join(self.processed_dir, file_name)
-                data = torch.load(saved_path)
+                data = torch.load(saved_path, weights_only=False)
                 data.y = label
                 if self.use_contrastive_learning:
                     data.positive_index = self.positive_indices[split_idx]
