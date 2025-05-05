@@ -3,3 +3,4 @@ runs
 /*.sh
 /*.out
 build
+data
