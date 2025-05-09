@@ -19,6 +19,14 @@ class SRAugmentedDataset(SRDataset, Dataset):
     def __iter__(self):
         for i in range(self.nr_gen_instances):
             n_vars, unsat, sat = self._generate()
+
+            unsat_data = construct_lcg(n_vars, unsat)
+            unsat_data.y = 0.
+            yield unsat_data
+            sat_data = construct_lcg(n_vars, sat)
+            sat_data.y = 0.
+            yield sat_data
+
             sat_gen = self._augment_instance(n_vars, sat, 1.)
             unsat_gen = self._augment_instance(n_vars, unsat, 0.)
             for (sat, unsat) in zip_longest(sat_gen, unsat_gen):

@@ -5,7 +5,7 @@ from torch_geometric.data import Batch
 from g4satbench.data.augmented import SRAugmentedDataset
 from g4satbench.data.multisat import MultiSATDataset
 from g4satbench.data.sr import SRDataset
-from g4satbench.data.three_sat import ThreeSatDataset
+from g4satbench.data.usat import USatDataset
 from g4satbench.models.gnn import GNN
 
 
@@ -38,7 +38,7 @@ def USat(n, m, l, samples):
     min_n, max_n = n
     min_m, max_m = m
     min_l, max_l = l
-    return ThreeSatDataset(samples, min_n, max_n, min_m, max_m, min_l, max_l)
+    return USatDataset(samples, min_n, max_n, min_m, max_m, min_l, max_l)
 
 def FileDataset(data_dir):
     return MultiSATDataset(data_dir)
