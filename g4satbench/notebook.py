@@ -38,7 +38,7 @@ def USat(n, m, l, samples):
     min_n, max_n = n
     min_m, max_m = m
     min_l, max_l = l
-    return ThreeSatDataset(samples, min_n, max_n, min_m, max_m, min_l, max_L)
+    return ThreeSatDataset(samples, min_n, max_n, min_m, max_m, min_l, max_l)
 
 def FileDataset(data_dir):
     return MultiSATDataset(data_dir)
