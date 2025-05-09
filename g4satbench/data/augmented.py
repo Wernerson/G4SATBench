@@ -14,7 +14,7 @@ class SRAugmentedDataset(SRDataset, Dataset):
         self.nr_augm_per_instance = nr_augm_per_instance
 
     def __len__(self):
-        return 2 * self.nr_gen_instances * self.nr_augm_per_instance
+        return 2 * self.nr_gen_instances * (self.nr_augm_per_instance+1)
 
     def __iter__(self):
         for i in range(self.nr_gen_instances):
