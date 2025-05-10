@@ -44,7 +44,7 @@ def FileDataset(data_dir):
     return MultiSATDataset(data_dir)
 
 
-def dataloader(dataset, batch_size=256):
+def dataloader(dataset, batch_size=1024):
     return DataLoader(dataset, batch_size=batch_size, collate_fn=collate_fn, pin_memory=True)
 
 
@@ -61,8 +61,7 @@ def facts(ft):
     }
 
 
-def Model(batch_size=256):
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+def Model(device = torch.device('cuda' if torch.cuda.is_available() else 'cpu'), batch_size=1024):
     options = opts(
         model="neurosat",
         graph="lcg",

@@ -55,6 +55,14 @@ class SRAugmentedDataset(SRDataset, Dataset):
 
     def _permutate(self, n_vars, clauses):
         if random.random() < 0.5:
+            # shuffle clause order
+            random.shuffle(clauses)
+        else:
+            # shuffle literal order
+            for clause in clauses:
+                random.shuffle(clause)
+
+        if random.random() < 0.5:
             # negate all variables
             for clause in clauses:
                 for l in range(len(clause)):
