@@ -40,8 +40,8 @@ def USat(n, m, l, samples):
     min_l, max_l = l
     return USatDataset(samples, min_n, max_n, min_m, max_m, min_l, max_l)
 
-def FileDataset(data_dir):
-    return MultiSATDataset(data_dir)
+def FileDataset(data_dir, balanced = False):
+    return MultiSATDataset(data_dir, balanced)
 
 
 def dataloader(dataset, batch_size=1024):
