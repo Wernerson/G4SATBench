@@ -20,7 +20,10 @@ class MultiSATDataset(IterableDataset):
     def __len__(self):
         total = 0
         for _, sat, unsat in self._get_batches():
-            total += sat + unsat
+            if self.balanced:
+                total += min(sat, unsat) * 2
+            else:
+                total += sat + unsat
         return total
 
     def _problems_in_file(self, file_path, sat):
