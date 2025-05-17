@@ -7,8 +7,9 @@ import re
 class MultiSATDataset(IterableDataset):
     BATCHES_REGEX = re.compile("(batch (\d+): sat: (\d+), unsat: (\d+))")
 
-    def __init__(self, data_dir):
+    def __init__(self, data_dir, balanced = False):
         self.data_dir = data_dir
+        self.balanced = balanced
 
     def _get_batches(self):
         batch_file = os.path.join(self.data_dir, "batches.txt")
@@ -46,7 +47,8 @@ class MultiSATDataset(IterableDataset):
             unsat_file = os.path.join(self.data_dir, "unsat", f"{batch}.cnf")
             sat_gen = self._problems_in_file(sat_file, True)
             unsat_gen = self._problems_in_file(unsat_file, False)
-            for (sat, unsat) in zip_longest(sat_gen, unsat_gen):
+            pairs = zip(sat_gen, unsat_gen) if self.balanced else zip_longest(sat_gen, unsat_gen)
+            for (sat, unsat) in pairs:
                 if sat is not None:
                     yield sat
                 if unsat is not None:
